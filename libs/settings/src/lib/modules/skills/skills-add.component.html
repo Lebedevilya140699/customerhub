@@ -1,0 +1,42 @@
+<form>
+	<hh-curtain-header>
+		<hh-curtain-title> Skills </hh-curtain-title>
+		<hh-curtain-close (click)="curtain.close()"></hh-curtain-close>
+	</hh-curtain-header>
+	<hh-curtain-content>
+		<hh-curtain-subtitle>Here you can add skills of your CV</hh-curtain-subtitle>
+		<div class="hh--settings-main-edit__content">
+			<mat-form-field appearance="outline" class="hh--curtain__input">
+				<mat-label>Skill Type</mat-label>
+				<input matInput placeholder="eg: Backend" name="skillType" />
+			</mat-form-field>
+		</div>
+		<div class="hh--settings-main-edit__content">
+			<mat-form-field class="hh--curtain__input" appearance="outline">
+				<mat-label>Skills</mat-label>
+				<mat-chip-list #chipList aria-label="Skill selection">
+					<mat-chip
+						*ngFor="let skill of skills"
+						[selectable]="selectable"
+						[removable]="removable"
+						(removed)="remove(skill)"
+					>
+						{{ skill }}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input
+						placeholder="New skill..."
+						[matChipInputFor]="chipList"
+						[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+						[matChipInputAddOnBlur]="addOnBlur"
+						(matChipInputTokenEnd)="add($event)"
+					/>
+				</mat-chip-list>
+			</mat-form-field>
+		</div>
+	</hh-curtain-content>
+	<hh-curtain-footer>
+		<button mat-flat-button color="primary" (click)="save()">SAVE</button>
+		<button mat-button (click)="curtain.close()">CANCEL</button>
+	</hh-curtain-footer>
+</form>

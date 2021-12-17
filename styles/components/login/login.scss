@@ -1,0 +1,45 @@
+@include block(login) {
+	display: block;
+	height: 100%;
+}
+@include block(login-container) {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+
+	@include element(form) {
+		display: flex;
+		flex-direction: column;
+		min-width: 300px;
+
+		> * {
+			margin-bottom: $spacing-05;
+		}
+
+		mat-divider {
+			margin-top: $spacing-05;
+		}
+
+		@include element(forgot) {
+			margin-top: $spacing-05;
+
+			a {
+				display: block;
+				text-align: center;
+				user-select: none;
+				cursor: pointer;
+				transition: $default-transition;
+
+				&:hover {
+					color: #9c9c9c;
+				}
+			}
+		}
+	}
+
+	@include element(image) {
+		height: 400px;
+	}
+}

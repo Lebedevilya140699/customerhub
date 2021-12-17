@@ -1,0 +1,104 @@
+<hh-grid>
+	<hh-column cols="6">
+		<div class="hh--personal-info-main">
+			<div style="display: flex; width: 100%">
+				<img
+					*ngIf="user.personalInfo?.photo !== null"
+					class="hh--personal-info-main__img"
+					src="{{ user.personalInfo?.photo }}"
+				/>
+				<div *ngIf="user.personalInfo?.photo === null" class="hh--personal-info-main__img">
+					<mat-icon>person</mat-icon>
+				</div>
+				<div class="hh--personal-info-main__name-tags">
+					<div class="hh--personal-info-main__name">
+						<h2>
+							{{ user.personalInfo?.fullName }}
+						</h2>
+					</div>
+					<hh-status-tags
+						[email]="user.contactInfo?.email"
+						[status]="user.personalInfo?.activityStatus"
+						[updated]="user.updatedAt"
+						[fullname]="user.personalInfo?.fullName"
+						[role]="user.personalInfo?.role"
+						[id]="user.id"
+					></hh-status-tags>
+				</div>
+			</div>
+			<div class="hh--personal-info-main__user-cv-info">
+				<div class="hh--personal-info-main__cv-row">
+					<mat-icon class="hh--personal-info-main__mat-icon">contacts</mat-icon>
+					{{ user.personalInfo?.position }}
+				</div>
+				<div class="hh--personal-info-main__cv-row">
+					<mat-icon class="hh--personal-info-main__mat-icon">place</mat-icon>
+					{{ user.personalInfo?.location.country }},
+					{{ user.personalInfo?.location.city }}
+				</div>
+				<div
+					*ngIf="
+						user.personalInfo?.manager.firstName && user.personalInfo?.manager.lastName
+					"
+					class="hh--personal-info-main__cv-row"
+				>
+					<mat-icon class="hh--personal-info-main__mat-icon"
+						>supervisor_account
+					</mat-icon>
+					Manager - {{ user.personalInfo?.manager.firstName }}
+					{{ user.personalInfo?.manager.lastName }}
+				</div>
+				<div *ngIf="user.contactInfo?.phone" class="hh--personal-info-main__cv-row">
+					<mat-icon class="hh--personal-info-main__mat-icon">phone</mat-icon>
+					{{ user.contactInfo?.phone }}
+				</div>
+			</div>
+			<div *ngFor="let link of user.contactInfo?.links" class="hh--personal-info-main__user-cv-info">
+				<div class="hh--personal-info-main__cv-row">
+					<mat-icon class="hh--personal-info-main__mat-icon">link</mat-icon>
+					{{ link }}
+				</div>
+			</div>
+		</div>
+	</hh-column>
+</hh-grid>
+<hh-grid>
+	<hh-column cols="3" class="hh--personal-info-experience">
+		<hh-profile-summary
+			*ngIf="user.personalInfo?.summary"
+			[summary]="user.personalInfo?.summary"
+		></hh-profile-summary>
+		<h1><b>Project experience</b></h1>
+		<ng-container *ngIf="user.experience">
+			<hh-project-experience [experience]="user.experience"></hh-project-experience>
+		</ng-container>
+	</hh-column>
+	<hh-column cols="3">
+		<h2>Education:</h2>
+		<div *ngFor="let edu of user.education">
+			{{ edu.universityName }}, {{ edu.degree }}, {{ edu.specialization }},
+			{{ edu.startYear | date: 'dd.LL.yyyy' }} -
+			{{ edu.finishYear | date: 'dd.LL.yyyy' }}
+		</div>
+
+		<p></p>
+		<h2>Technical skills:</h2>
+		<hh-skills-tags *ngIf="user.skills" [skills]="user.skills"></hh-skills-tags>
+		<p></p>
+		<h2>Certificates:</h2>
+		<hh-skills-tags
+			*ngIf="user.certificates"
+			[certificates]="user.certificates"
+		></hh-skills-tags>
+		<p></p>
+		<h2>Quick contact data:</h2>
+		aim your smartphone camera to make a call
+		<qrcode
+			*ngIf="user.personalInfo"
+			[qrdata]="user.personalInfo?.fullName + ': ' + user.contactInfo?.phone"
+			[width]="256"
+			[errorCorrectionLevel]="'M'"
+		>
+		</qrcode>
+	</hh-column>
+</hh-grid>

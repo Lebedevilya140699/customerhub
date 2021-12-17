@@ -1,0 +1,30 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container">
+			<h4>Certificates</h4>
+			<div class="hh--buttons-container">
+				<button mat-button color="primary" (click)="triggerAdd()">
+					<mat-icon>add</mat-icon>
+					ADD
+				</button>
+			</div>
+		</div>
+		<div class="hh--cv-block__data-container hh--cv-block__data-container__certificate"
+			 *ngFor="let data of (resume$ | ngrxPush)?.certificates; let i = index"
+		>
+			<h4>{{data.name}}
+				<div class="hh--buttons-container">
+					<button mat-button color="primary" (click)="triggerEdit(i)">
+						<mat-icon>edit</mat-icon>
+						EDIT
+					</button>
+					<button mat-button color="primary" (click)="deleteCertificate(i)">
+						<mat-icon>delete</mat-icon>
+						DELETE
+					</button>
+				</div>
+			</h4>
+			<p *ngIf="data.expirationAt">Expires: <span>{{data.expirationAt | date: 'MMMM d, y'}}</span></p>
+		</div>
+	</div>
+</hh-block>

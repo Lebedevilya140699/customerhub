@@ -1,0 +1,146 @@
+@include block(personal-info-main) {
+	padding: $spacing-03;
+	background: linear-gradient(272.9deg, #74c5f3 -47.69%, #7594e4 112.27%);
+	border-radius: 24px;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+
+	@include element(img) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 7.8125rem;
+		height: 7.8125rem;
+		border-radius: 75px;
+		margin: $spacing-03;
+		background: rgba(0, 0, 0, 0.05);
+
+		.mat-icon {
+			font-size: 66px;
+
+			width: 64px;
+			height: 64px;
+			color: white;
+		}
+	}
+
+	@include element(name-tags) {
+		display: flex;
+		width: 80%;
+		flex-direction: column;
+		padding-top: $spacing-05;
+		padding-left: $spacing-05;
+	}
+
+	@include element(name) {
+		h2 {
+			font-weight: 900;
+			font-size: 3.125rem;
+			color: #ffffff;
+			margin-bottom: $spacing-05;
+		}
+	}
+
+	@include element(status) {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		padding: 16px 0px;
+		position: relative;
+		width: 436px;
+		height: 56px;
+	}
+
+	.mat-chip.mat-standard-chip.approved {
+		background: #91c48a;
+		color: #2f5c28;
+	}
+
+	.mat-chip.mat-standard-chip.pending {
+		background: #e39e9c;
+		color: #a92d26;
+	}
+
+	@include element(mat-icon) {
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+		margin: 0px 8px;
+	}
+
+	@include element(user-cv-info) {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 1rem;
+		color: #ffffff;
+	}
+
+	@include element(cv-row) {
+		display: flex;
+		align-items: center;
+		padding: $spacing-03;
+	}
+}
+
+@include block(personal-info-experience) {
+	@include element(experience) {
+		display: inherit;
+		flex-direction: column;
+		align-items: flex-start;
+		padding-bottom: 20px;
+		position: relative;
+		width: 866px;
+		background: #ffffff;
+	}
+
+	@include element(heading) {
+		align-items: center;
+		padding: 0px;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 1.125rem;
+		line-height: 150%;
+		position: static;
+		left: 0px;
+		top: 0px;
+		color: #4c83d6;
+		display: flex;
+	}
+
+	@include element(mat-icon) {
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+		margin-right: $spacing-03;
+	}
+
+	@include element(dates) {
+		flex: none;
+		order: 1;
+		flex-grow: 0;
+		margin: 14px 0px;
+	}
+
+	@include element(content) {
+		position: static;
+		left: 0px;
+		top: 104px;
+		display: table-cell;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: $spacing-05;
+		line-height: 150%;
+		color: #000000;
+		flex: none;
+		order: 2;
+		align-self: stretch;
+		flex-grow: 0;
+		margin: 0 $spacing-03;
+		text-align: justify;
+	}
+}

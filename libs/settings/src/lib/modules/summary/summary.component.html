@@ -1,0 +1,17 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container">
+			<h4>Summary</h4>
+			<div class="hh--buttons-container">
+				<button mat-button color="primary" (click)="triggerEdit()"><mat-icon>edit</mat-icon>EDIT</button>
+			</div>
+		</div>
+		<div class="hh--cv-block__data-container">
+			<div class="hh--cv-block__data--array">
+				<div class="hh--cv-block__data-content--array-item" *ngFor="let item of (resume$ | ngrxPush)?.summary; let i = index">
+					<p>{{item}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</hh-block>

@@ -1,0 +1,31 @@
+<hh-grid expanded>
+	<hh-column cols="3">
+		<div class="hh--login-container">
+			<form [ngrxFormState]="$formState$ | async">
+			<div class="hh--login-container__form">
+				<h1>Login</h1>
+				<mat-form-field appearance="outline" >
+					<mat-label>Login</mat-label>
+					<input matInput placeholder="Type your login" [ngrxFormControlState]="($formControls$ | async)?.login"/>
+					<mat-hint></mat-hint>
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Password</mat-label>
+					<input matInput placeholder="Type your password" type="password" [ngrxFormControlState]="($formControls$ | async)?.password"/>
+					<mat-hint></mat-hint>
+				</mat-form-field>
+				<button mat-flat-button color="primary" (click)="submitForm()">Login</button>
+				<mat-divider></mat-divider>
+				<div class="hh--login-container__form__forgot">
+					<a>FORGOT PASSWORD?</a>
+				</div>
+			</div>
+			</form>
+		</div>
+	</hh-column>
+	<hh-column cols="3">
+		<div class="hh--login-container">
+			<img class="hh--login-container__image" src="/assets/login.png" />
+		</div>
+	</hh-column>
+</hh-grid>

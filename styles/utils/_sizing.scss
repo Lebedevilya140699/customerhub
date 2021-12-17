@@ -1,0 +1,140 @@
+$sizes: (
+	base: 8px,
+) !default;
+
+@function th-get-size($multiplier, $sizes-map: $sizes, $negative: false) {
+	$base: map_get($sizes-map, base);
+	$multiplied: $base * $multiplier;
+
+	@return if($negative == false, $multiplied, -$multiplied);
+}
+
+$neat-grid: (
+	columns: 12,
+	gutter: 16px,
+);
+
+$hh--grid--sm: (
+	columns: 4,
+	gutter: 16px,
+	media: 'screen and (max-width: 320px)',
+);
+
+$hh--grid--md: (
+	columns: 4,
+	gutter: 16px,
+	media: 'screen and (min-width: 320px) and (max-width: 672px)',
+);
+
+$hh--grid--lg: (
+	columns: 8,
+	gutter: 16px,
+	media: 'screen and (orientation: portrait) and (min-width: 672px) and (max-width: 1056px)',
+);
+
+$hh--grid--xl: (
+	columns: 8,
+	gutter: 16px,
+	media: 'screen and (min-width: 1056px)',
+);
+
+$spacing-01: 0.125rem; //2px
+$spacing-02: 0.25rem; //4px
+$spacing-03: 0.5rem; //8px
+$spacing-04: 0.75rem; //12px
+$spacing-05: 1rem; //16px
+$spacing-06: 1.5rem; //24px
+$spacing-07: 2rem; //32px
+$spacing-08: 2.5rem; //40px
+$spacing-09: 3rem; //48px
+$spacing-10: 4rem; //64px
+$spacing-11: 5rem; //80px
+$spacing-12: 6rem; //96px
+$spacing-13: 10rem; //160px
+
+$spacing-map: (
+	0: 0,
+	1: $spacing-01,
+	2: $spacing-02,
+	3: $spacing-03,
+	4: $spacing-04,
+	5: $spacing-05,
+	6: $spacing-06,
+	7: $spacing-07,
+	8: $spacing-08,
+	9: $spacing-09,
+	10: $spacing-10,
+	11: $spacing-11,
+	12: $spacing-12,
+	13: $spacing-13,
+);
+
+$spacing-maps: (
+	spacing: $spacing-map,
+);
+
+$grid-map: (
+	sm: $hh--grid--sm,
+	md: $hh--grid--md,
+	lg: $hh--grid--lg,
+	xl: $hh--grid--xl,
+);
+
+$spacing-type: (
+	p: padding,
+	m: margin,
+);
+
+$spacing-direction: (
+	l: left,
+	r: right,
+	t: top,
+	b: bottom,
+	x: (
+		left,
+		right,
+	),
+	y: (
+		top,
+		bottom,
+	),
+);
+
+$hh--prefix: hh;
+
+@mixin hh--spacer($spacing-direction-values, $spacing-type-value, $token-value) {
+	@if (length($spacing-direction-values) == 2) {
+		#{$spacing-type-value}: {
+			#{nth($spacing-direction-values, 1)}: $token-value !important;
+			#{nth($spacing-direction-values, 2)}: $token-value !important;
+		}
+	} @else {
+		#{$spacing-type-value}: {
+			#{$spacing-direction-values}: $token-value !important;
+		}
+	}
+}
+
+@mixin hh--spacing {
+	@each $map-name, $map-value in $spacing-maps {
+		@each $token, $token-value in $map-value {
+			@each $spacing-type-token, $spacing-type-value in $spacing-type {
+				/*@each $spacing-direction-token, $spacing-direction-values in $spacing-direction {
+					@each $grid-token, $grid-value in $grid-map {
+						@include grid-media($grid-value) {
+							.#{$hh--prefix}--#{$map-name}-#{$token}-#{$spacing-type-token}-#{$grid-token}-#{$spacing-direction-token} {
+								@include hh--spacer($spacing-direction-values, $spacing-type-value, $token-value);
+							}
+						}
+					}
+					.#{hh--prefix}--#{$map-name}-#{$token}-#{$spacing-type-token}-#{$spacing-direction-token} {
+						@include hh--spacer($spacing-direction-values, $spacing-type-value, $token-value);
+					}
+				}*/
+				.#{$hh--prefix}--#{$map-name}-#{$token}-#{$spacing-type-token} {
+					#{$spacing-type-value}: $token-value !important;
+				}
+			}
+		}
+	}
+}

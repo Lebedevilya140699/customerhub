@@ -1,0 +1,101 @@
+<hh-grid>
+	<hh-column cols="6">
+		<hh-breadcrumbs [breadcrumbs]="breadcrumbs"></hh-breadcrumbs>
+	</hh-column>
+</hh-grid>
+<hh-grid>
+	<hh-column cols="1">
+		<div class="hh--settings-menu">
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/main'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>person</mat-icon>
+				<p>Main</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/contacts'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>contacts</mat-icon>
+				<p>Contacts</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/certificates'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>class</mat-icon>
+				<p>Certificates</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/experience'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>verified</mat-icon>
+				<p>Experience</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/summary'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>tour</mat-icon>
+				<p>Summary</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/skills'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>extension</mat-icon>
+				<p>Skills</p>
+			</div>
+			<div
+				class="hh--settings-menu__menu-item"
+				[routerLink]="'/settings/education'"
+				routerLinkActive="hh--settings-menu__menu-item--selected"
+			>
+				<mat-icon>school</mat-icon>
+				<p>Education</p>
+			</div>
+		</div>
+		<div class="hh--settings-actions">
+			<a
+				class="hh--settings-actions__action hh--settings-actions__action--available"
+				[routerLink]="'/profile/' + (resume$ | ngrxPush)?.employeeId"
+				target="_blank"
+			>
+				Last Approved
+				<mat-icon>call_made</mat-icon>
+			</a>
+			<a
+				class="hh--settings-actions__action"
+				[class.hh--settings-actions__action--available]="available"
+				(click)="submit()"
+			>
+				Request approval
+				<mat-icon>call_made</mat-icon>
+			</a>
+			<a
+				class="hh--settings-actions__action hh--settings-actions__action--available"
+				[class.hh--settings-actions__action--available]="!isDownloading"
+				[matMenuTriggerFor]="menu"
+			>
+				<div *ngIf="!isDownloading">Export</div>
+				<div *ngIf="isDownloading">Loading...</div>
+				<mat-icon>call_made</mat-icon>
+			</a>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item (click)="download()">Export CV</button>
+				<button mat-menu-item (click)="downloadBages()">Export CV with bages</button>
+			</mat-menu>
+		</div>
+	</hh-column>
+	<hh-column cols="5">
+		<router-outlet></router-outlet>
+	</hh-column>
+</hh-grid>

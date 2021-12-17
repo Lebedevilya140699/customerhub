@@ -1,0 +1,29 @@
+<ng-container *ngIf="user$ | ngrxPush as user">
+	<hh-grid>
+		<hh-column cols="6">
+			<hh-breadcrumbs [breadcrumbs]="breadcrumbs"></hh-breadcrumbs>
+		</hh-column>
+	</hh-grid>
+	<hh-grid>
+		<hh-column cols="6">
+				<div class="hh--task-view__buttons-container">
+					<a
+						class="hh--settings-actions__action hh--settings-actions__action--available"
+						target="_blank"
+						(click)="approve()"
+					>
+						Approve
+						<mat-icon *ngIf="true">done</mat-icon>
+					</a>
+					<a
+						class="hh--settings-actions__action"
+						target="_blank"
+					>
+						Add comment
+						<mat-icon *ngIf="true">comment</mat-icon>
+					</a>
+				</div>
+		</hh-column>
+	</hh-grid>
+	<hh-personal-info [user]="user"></hh-personal-info>
+</ng-container>

@@ -1,0 +1,62 @@
+<hh-grid>
+	<hh-column cols="6">
+		<hh-breadcrumbs [breadcrumbs]="breadcrumbs"></hh-breadcrumbs>
+	</hh-column>
+</hh-grid>
+<hh-grid>
+	<hh-column cols="1">
+		<hh-block>
+			<div class="hh--tasks__filter-container">
+				<h4>Filter</h4>
+				<div class="hh--tasks__filter-container__filters">
+					<hh-tooltip-filter type="red"></hh-tooltip-filter>
+					<hh-tooltip-filter type="blue"></hh-tooltip-filter>
+					<hh-tooltip-filter type="yellow"></hh-tooltip-filter>
+					<hh-tooltip-filter type="green"></hh-tooltip-filter>
+					<hh-tooltip-filter type="cyan"></hh-tooltip-filter>
+					<hh-tooltip-filter type="pink"></hh-tooltip-filter>
+					<hh-tooltip-filter type="purple"></hh-tooltip-filter>
+				</div>
+			</div>
+		</hh-block>
+		<hh-block>
+			<div class="hh--tasks__sort-container">
+				<h4>Sort By</h4>
+				<a
+					class="hh--settings-actions__action hh--settings-actions__action--available"
+					[class.hh--settings-actions__action--available]="true"
+					target="_blank"
+				>
+					Last Updated
+					<mat-icon *ngIf="true">done</mat-icon>
+				</a>
+				<a
+					class="hh--settings-actions__action hh--settings-actions__action--available"
+					target="_blank"
+				>
+					Created Date
+					<mat-icon *ngIf="false">done</mat-icon>
+				</a>
+				<a
+					class="hh--settings-actions__action hh--settings-actions__action--available"
+					target="_blank"
+				>
+					Type
+					<mat-icon *ngIf="false">done</mat-icon>
+				</a>
+				<a
+					class="hh--settings-actions__action hh--settings-actions__action--available"
+					target="_blank"
+				>
+					Name
+					<mat-icon *ngIf="false">done</mat-icon>
+				</a>
+			</div>
+		</hh-block>
+	</hh-column>
+	<hh-column cols="3">
+		<hh-block *ngFor="let task of (tasks$ | ngrxPush)">
+			<hh-task-card [task]="task" (click)="selectTask(task.id)"></hh-task-card>
+		</hh-block>
+	</hh-column>
+</hh-grid>

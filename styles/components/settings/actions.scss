@@ -1,0 +1,43 @@
+@include block(settings-actions) {
+	margin-top: $spacing-07;
+
+	@include element(action) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: $spacing-04 $spacing-05;
+		background: #f0f0f0;
+		border-radius: 6px;
+		cursor: not-allowed;
+		user-select: none;
+		border: 1px solid transparent;
+		transition: $default-transition;
+		margin-bottom: $spacing-05;
+		color: #999;
+		letter-spacing: 1.25px;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 0.75rem;
+
+		mat-icon {
+			visibility: hidden;
+			margin-left: $spacing-03;
+		}
+
+		@include modifier(available) {
+			cursor: pointer;
+			border: 1px solid #0153F2;
+			color: #0153F2;
+			background: white;
+
+			mat-icon {
+				visibility: visible;
+			}
+
+			&:hover {
+				color: #7AA6FC;
+				border: 1px solid #7AA6FC;
+			}
+		}
+	}
+}

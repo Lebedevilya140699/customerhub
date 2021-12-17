@@ -1,0 +1,25 @@
+@include block(status-tags) {
+	@include element(export) {
+		background-color: #e0e0e0;
+		padding: 7px 12px;
+		display: inline-flex;
+		height: 30px;
+		border-radius: 16px;
+		align-items: center;
+		min-height: 32px;
+		height: 1px;
+		font-weight: 500;
+		margin: 4px;
+		cursor: pointer;
+
+		&:hover {
+			background: #c6c6c6;
+		}
+
+		mat-icon {
+			padding-left: 7px;
+			display: inline-flex;
+			align-items: center;
+		}
+	}
+}

@@ -1,0 +1,199 @@
+@include block(cv-block) {
+	@include element(data-container) {
+		display: flex;
+		flex-direction: column;
+		padding-top: $spacing-05;
+		padding-bottom: $spacing-05;
+		position: relative;
+
+		& > * {
+			/*border-bottom: 2px dotted #d0d0d0;*/
+		}
+
+		& > *:last-child {
+			border-bottom: none;
+		}
+
+		@include modifier(experience) {
+			border: 1px solid #e0e0e0;
+			border-radius: $spacing-03;
+			padding: $spacing-05;
+			box-sizing: border-box;
+			margin-top: $spacing-03;
+
+			& > * {
+				border-bottom: none;
+			}
+		}
+
+		@include modifier(skills) {
+			padding: 0;
+		}
+
+		@include element(buttons) {
+			display: flex;
+			flex-direction: row-reverse;
+			position: absolute;
+			top: $spacing-05;
+			right: $spacing-05;
+
+			mat-icon {
+				font-size: 1.25rem;
+			}
+
+			& > button {
+				margin-left: $spacing-03;
+			}
+		}
+
+		@include element(certificate) {
+			padding: $spacing-05;
+			border: 1px solid rgba(0, 0, 0, 0.3);
+			margin-bottom: $spacing-05;
+			border-radius: $spacing-03;
+			user-select: none;
+
+			&:hover {
+				button {
+					opacity: 1;
+				}
+			}
+
+			button {
+				opacity: 0;
+				transition: $default-transition;
+			}
+
+			h4 {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 0;
+				font-weight: 700;
+				color: #292929;
+				font-size: 1.25rem;
+			}
+
+			p {
+				margin-top: $spacing-03;
+			}
+
+			span {
+
+				color: #999;
+			}
+		}
+	}
+
+	@include element(data) {
+		display: flex;
+		padding-top: $spacing-04;
+		padding-bottom: $spacing-04;
+
+		@include modifier(array) {
+			flex-direction: column;
+		}
+
+		@include modifier(skills) {
+			flex-direction: column;
+		}
+	}
+
+	@include element(data-title) {
+		min-width: 30%;
+		font-size: 0.825rem;
+		font-weight: 700;
+		letter-spacing: 1.25px;
+		text-transform: uppercase;
+	}
+
+	@include element(data-content) {
+		width: 100%;
+		font-size: $spacing-05;
+		white-space: pre-line;
+
+		p {
+			margin: 0;
+		}
+
+		@include modifier(phone) {
+			a {
+				color: #3888cb;
+				text-decoration: none;
+			}
+		}
+
+		@include modifier(links) {
+			display: inline-flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			a {
+				color: #3888cb;
+				text-decoration: none;
+				border-bottom: 1px dotted #3888cb;
+			}
+		}
+
+		@include modifier(link) {
+			display: flex;
+			align-items: center;
+			margin-bottom: $spacing-05;
+
+			&:hover {
+				mat-icon {
+					opacity: 1;
+				}
+			}
+
+			mat-icon {
+				margin-left: $spacing-03;
+				cursor: pointer;
+				opacity: 0;
+				transition: $default-transition;
+				color: #999;
+			}
+		}
+
+		@include modifier(array-item) {
+			margin-bottom: $spacing-03;
+
+			p {
+				font-size: 1rem;
+			}
+		}
+
+		@include modifier(skills) {
+			margin-top: $spacing-05;
+		}
+
+		@include modifier(not-specified) {
+			p {
+				color: #999;
+				margin: 0;
+			}
+		}
+	}
+}
+
+@include block(cv-title-container) {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $spacing-05;
+
+	h4 {
+		font-size: $spacing-06;
+		line-height: 150%;
+		letter-spacing: 1.25px;
+		text-transform: uppercase;
+		margin: 0;
+		font-weight: 700;
+	}
+
+	mat-icon {
+		font-size: 1.25rem;
+		line-height: 110%;
+		margin-right: $spacing-03;
+	}
+}

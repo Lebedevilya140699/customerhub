@@ -1,0 +1,137 @@
+/* ----------------------------------------------------------------------------------------------------
+
+Super Form Reset
+
+A couple of things to watch out for:
+
+- IE8: If a text text-input doesn't have padding on all sides or none the text won't be centered.
+- The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+- You NEED to set the font-size and family on all form elements
+- Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+- You can style the upload button in webkit using ::-webkit-file-upload-button
+- ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+- IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+- By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+
+----------------------------------------------------------------------------------------------------*/
+
+input,
+label,
+select,
+button,
+textarea {
+	background: none;
+	border: 0;
+	display: inline-block;
+	font-family: Arial, serif;
+	/* Browsers have different default form fonts */
+	font-size: 13px;
+	line-height: 1;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	vertical-align: middle;
+	white-space: normal;
+}
+
+select {
+	appearance: none;
+}
+
+/* Remove the stupid outer glow in Webkit */
+input:focus {
+	outline: 0;
+}
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type='reset'],
+input[type='button'],
+input[type='submit'],
+input[type='checkbox'],
+input[type='radio'],
+select {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Button Controls
+-----------------------------------------------*/
+
+input[type='checkbox'],
+input[type='radio'] {
+	height: 13px;
+	width: 13px;
+}
+
+/* Search Input
+-----------------------------------------------*/
+
+/* Make webkit render the search text-input like a normal text field */
+input[type='search'] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+}
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration {
+	display: none;
+}
+
+/* Buttons
+-----------------------------------------------*/
+
+button,
+input[type='reset'],
+input[type='button'],
+input[type='submit'] {
+	/* Fix IE7 display bug */
+	overflow: visible;
+	width: auto;
+}
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button {
+	background: none;
+	border: 0;
+	padding: 0;
+}
+
+/* Textarea
+-----------------------------------------------*/
+
+textarea {
+	/* Turn off scroll bars in IE unless needed */
+	overflow: auto;
+	/* Move the label to the top */
+	vertical-align: top;
+}
+
+select[multiple] {
+	/* Move the label to the top */
+	vertical-align: top;
+}
+
+*:focus {
+	outline: none !important;
+}
+
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-outer-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+	-webkit-appearance: none;
+	appearance: none;
+	display: none;
+}

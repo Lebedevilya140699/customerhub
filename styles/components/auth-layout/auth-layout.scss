@@ -1,0 +1,26 @@
+@include block(auth-layout) {
+	@include element(header) {
+		border-bottom: 1px solid #c4c4c4;
+		height: 3.625rem;
+		padding: 0 $spacing-05;
+	}
+
+	@include element(container) {
+		display: flex;
+		height: 100%;
+	}
+
+	@include element(logo-container) {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		user-select: none;
+		cursor: pointer;
+
+		h1 {
+			color: #292929;
+			font-weight: 900;
+			margin: 0;
+		}
+	}
+}

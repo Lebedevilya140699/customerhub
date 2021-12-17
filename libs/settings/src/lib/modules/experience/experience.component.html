@@ -1,0 +1,43 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container hh--cv-title-container--experience">
+			<h4>Professional Experience</h4>
+			<button mat-button color="primary" (click)="triggerAdd()">
+				<mat-icon>add</mat-icon>
+				ADD
+			</button>
+		</div>
+		<div class="hh--cv-block__data-container hh--cv-block__data-container--experience"
+			 *ngFor="let data of (resume$ | ngrxPush)?.experience"
+		>
+			<div class="hh--cv-block__data-container__buttons">
+				<button mat-button color="primary" (click)="triggerEdit()">
+					<mat-icon>edit</mat-icon>
+					EDIT
+				</button>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Client</div>
+				<div class="hh--cv-block__data-content">{{data.customerName}}</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Role</div>
+				<div class="hh--cv-block__data-content">{{data.role}}</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Duration</div>
+				<div class="hh--cv-block__data-content">{{(data.duration)}}</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Description</div>
+				<div class="hh--cv-block__data-content">
+					{{data.projectDescription}}
+				</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Responsibilities</div>
+				<div class="hh--cv-block__data-content">{{data.responsibilities}}</div>
+			</div>
+		</div>
+	</div>
+</hh-block>

@@ -1,0 +1,20 @@
+@include block(settings-main-edit) {
+
+	@include element(content) {
+		p {
+			font-weight: 700;
+		}
+	}
+
+	@include element(field-group) {
+		display: flex;
+
+		& > mat-form-field {
+			margin-right: $spacing-05;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}

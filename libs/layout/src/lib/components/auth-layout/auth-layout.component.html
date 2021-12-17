@@ -1,0 +1,18 @@
+<div class="hh--layout">
+	<div class="hh--auth-layout">
+		<div class="hh--auth-layout__header">
+			<hh-grid expanded>
+				<hh-column cols="6" collapsed>
+					<div class="hh--auth-layout__container">
+						<div class="hh--auth-layout__logo-container">
+							<h1 [routerLink]="'/'">CTHub</h1>
+						</div>
+					</div>
+				</hh-column>
+			</hh-grid>
+		</div>
+	</div>
+	<div class="hh--layout__content">
+		<router-outlet></router-outlet>
+	</div>
+</div>

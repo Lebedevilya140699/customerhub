@@ -1,0 +1,23 @@
+<ng-container *ngIf="experience">
+	<div class="hh--personal-info-experience__experience" *ngFor="let data of experience">
+		<div class="hh--personal-info-experience__heading">
+			<mat-icon class="hh--personal-info-experience__mat-icon">card_travel</mat-icon>
+			{{ data.customerName }} - {{ data.role }}
+		</div>
+		<div class="hh--personal-info-experience__dates">
+			{{ data.startedAt | date: 'dd.LL.yyyy' }} - {{ data.endedAt | date: 'dd.LL.yyyy' }}
+		</div>
+		<div class="hh--personal-info-experience__content">
+			<b>Description:</b> {{ data.projectDescription }}
+			<p></p>
+			<b>Project:</b> {{ data.projectName }}
+			<p></p>
+			<b>Technologies:</b> {{ data.technologies }}
+			<p></p>
+			<b>Responsibilities:</b> {{ data.responsibilities }}
+			<p></p>
+			<b>Customer domain:</b> {{ data.customerDomain }}
+		</div>
+		<p></p>
+	</div>
+</ng-container>

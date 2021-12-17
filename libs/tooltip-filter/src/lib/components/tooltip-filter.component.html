@@ -1,0 +1,14 @@
+<div class="hh--tooltip-filter"
+	 [matTooltip]="tooltip"
+	 [class.hh--tooltip-filter--red]="type === 'red'"
+	 [class.hh--tooltip-filter--blue]="type === 'blue'"
+	 [class.hh--tooltip-filter--yellow]="type === 'yellow'"
+	 [class.hh--tooltip-filter--green]="type === 'green'"
+	 [class.hh--tooltip-filter--cyan]="type === 'cyan'"
+	 [class.hh--tooltip-filter--purple]="type === 'purple'"
+	 [class.hh--tooltip-filter--pink]="type === 'pink'"
+	 [class.hh--tooltip-filter--checked]="checked"
+	 (click)="triggerChecked()"
+>
+	<mat-icon>done</mat-icon>
+</div>

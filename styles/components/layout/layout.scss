@@ -1,0 +1,8 @@
+@include block(layout) {
+	height: 100%;
+
+	@include element(content) {
+		padding-top: $header-height;
+		height: calc(100% - #{$header-height});
+	}
+}

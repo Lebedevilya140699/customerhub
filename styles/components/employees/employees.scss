@@ -1,0 +1,170 @@
+@include block(employees-search) {
+	width: 100%;
+
+	.mat-form-field-wrapper {
+		padding-bottom: 0;
+	}
+	.mat-form-field-underline {
+		display: none;
+	}
+	.mat-form-field-flex {
+		height: $spacing-08;
+		padding: 5px 5px 0 !important;
+
+		background-color: #e8e8e8;
+		border-radius: 2px !important;
+	}
+	@include element(clear) {
+		cursor: pointer;
+	}
+	@include element(search-icon) {
+		text-align: center;
+		user-select: none;
+
+		margin: 0 14px;
+		color: rgba(#000, 0.54);
+	}
+}
+
+@include block(employees-list) {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	gap: $spacing-05;
+	width: 100%;
+
+	@include element(card) {
+		display: block;
+	}
+}
+
+@include block(employee-card) {
+	display: flex;
+	align-items: center;
+	padding: $spacing-05;
+	border: 1px solid #dbdbdb;
+	border-radius: $spacing-01;
+
+	@include element(avatar) {
+		width: 76px;
+		height: 76px;
+		flex-shrink: 0;
+		margin-right: 18px;
+
+		border-radius: 50%;
+
+		@include element(placeholder) {
+			font-size: 4.25rem;
+
+			&,
+			.mat-icon {
+				width: 46px !important;
+				height: 46px !important;
+			}
+		}
+	}
+
+	@include element(hide-checkbox) {
+		.mat-checkbox {
+			display: none;
+		}
+
+		:hover {
+			.mat-checkbox {
+				display: inline;
+			}
+			.hh--employee-card__action__icon {
+				display: none;
+			}
+		}
+	}
+
+	@include element(show-checkbox) {
+		.mat-checkbox {
+			display: inline;
+		}
+	}
+
+	@include element(info) {
+		flex-grow: 1;
+
+		@include element(name) {
+			font-size: 1.5rem;
+			font-weight: bold;
+			word-break: break-word;
+
+			margin-bottom: 7px;
+		}
+
+		@include element(list) {
+			font-size: 1rem;
+
+			display: block;
+			margin-bottom: 7px;
+
+			@include element(item) {
+				line-height: 1;
+
+				&:not(:last-child) {
+					margin-bottom: 7px;
+				}
+
+				@include element(icon) {
+					font-size: 16px;
+
+					margin-right: 4px;
+				}
+
+				.mat-icon {
+					vertical-align: top;
+
+					height: 16px;
+					width: 14px;
+				}
+			}
+		}
+	}
+
+	@include element(badge) {
+		display: inline-block;
+		border-radius: 16px;
+		padding: 4px 16px;
+
+		@include modifier(red) {
+			color: #a92d26;
+			background-color: #e39e9c;
+		}
+
+		@include modifier(green) {
+			color: #2f5c28;
+			background-color: #91c48a;
+		}
+	}
+
+	@include element(action) {
+		align-self: flex-end;
+
+		@include element(icon) {
+			width: 15px;
+			height: 15px;
+		}
+	}
+}
+
+@include block(employees-loader) {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	margin: 24px 0;
+}
+
+@include block(employees-export-button) {
+	margin-top: 1rem;
+}
+
+@include block(employees-no-results) {
+	font-size: 36px;
+	text-align: center;
+
+	margin: $spacing-09 0;
+}

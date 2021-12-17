@@ -1,0 +1,73 @@
+@include block(task-card) {
+	border-radius: 6px;
+	box-shadow: 0px 4px 8px #EAEAEA;
+	padding: $spacing-05;
+	box-sizing: border-box;
+	position: relative;
+	transition: $default-transition;
+	cursor: pointer;
+	border: 1px solid #e8e8e8;
+
+	&:hover {
+		background: #f0f0f0;
+	}
+
+	@include element(header) {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	@include element(filters) {
+		display: flex;
+	}
+
+	@include element(filter) {
+		width: 20px;
+		height: 20px;
+		background: red;
+		border-radius: 20px;
+		margin-right: $spacing-03;
+	}
+
+	@include element(id) {
+		p {
+			margin: 0;
+		}
+	}
+
+	@include element(content) {
+		margin-top: $spacing-03;
+	}
+
+	@include element(title) {
+		h4 {
+			font-size: 24px;
+			font-weight: 700;
+		}
+	}
+
+	@include element(data) {
+		display: flex;
+		margin-top: $spacing-05;
+		max-width: 95%;
+
+		a {
+			color: #4c83d6;
+		}
+	}
+
+	@include element(data-title) {
+		p {
+			font-weight: 500;
+			margin: 0;
+		}
+
+		margin-right: $spacing-05;
+	}
+
+	@include element(icon) {
+		position: absolute;
+		bottom: $spacing-05;
+		right: $spacing-05;
+	}
+}

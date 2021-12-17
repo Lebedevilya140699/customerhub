@@ -1,0 +1,70 @@
+<form>
+	<hh-curtain-header>
+		<hh-curtain-title>Experience</hh-curtain-title>
+		<hh-curtain-close (click)="curtain.close()"></hh-curtain-close>
+	</hh-curtain-header>
+	<hh-curtain-content>
+		<hh-curtain-subtitle>Here you can add your experience</hh-curtain-subtitle>
+		<mat-form-field appearance="outline" class="hh--curtain__input">
+			<mat-label>Client</mat-label>
+			<input matInput placeholder="e.g. CustomerTimes" name="client"/>
+		</mat-form-field>
+		<mat-form-field appearance="outline" class="hh--curtain__input">
+			<mat-label>Position</mat-label>
+			<input matInput placeholder="e.g. Project Manager" name="role"/>
+		</mat-form-field>
+		<div class="hh--settings-main-edit__field-group">
+			<mat-form-field appearance="outline" class="hh--curtain__input">
+				<mat-label>Start date</mat-label>
+				<input matInput [matDatepicker]="startedAt" [max]="maxDate" name="startedAt" placeholder="March 5, 2020"/>
+				<mat-datepicker-toggle matSuffix [for]="startedAt"></mat-datepicker-toggle>
+				<mat-datepicker #startedAt></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="hh--curtain__input">
+				<mat-label>End date</mat-label>
+				<input
+					matInput
+					[matDatepicker]="endedAt"
+					[max]="maxDate"
+					placeholder="August 3, 2021 or empty"
+					name="endedAt"
+				/>
+				<mat-datepicker-toggle matSuffix [for]="endedAt"></mat-datepicker-toggle>
+				<mat-datepicker #endedAt></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<mat-form-field appearance="outline" class="hh--curtain__input">
+			<mat-label>Description</mat-label>
+			<input matInput placeholder="Describe your experience" name="description"/>
+		</mat-form-field>
+		<mat-form-field appearance="outline" class="hh--curtain__input">
+			<mat-label>Responsibilities</mat-label>
+			<input matInput placeholder="Describe your responsibilities" name="responsibilities"/>
+		</mat-form-field>
+		<mat-form-field class="hh--curtain__input" appearance="outline">
+			<mat-label>Technologies</mat-label>
+			<mat-chip-list #chipList aria-label="Technologies add">
+				<mat-chip
+					*ngFor="let skill of skills"
+					selectable
+					removable
+					(removed)="remove(skill)"
+				>
+					{{ skill }}
+					<mat-icon matChipRemove>cancel</mat-icon>
+				</mat-chip>
+				<input
+					placeholder="Type and hit enter"
+					[matChipInputFor]="chipList"
+					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+					matChipInputAddOnBlur
+					(matChipInputTokenEnd)="add($event)"
+				/>
+			</mat-chip-list>
+		</mat-form-field>
+	</hh-curtain-content>
+	<hh-curtain-footer>
+		<button mat-flat-button color="primary" (click)="save()">SAVE</button>
+		<button mat-button (click)="curtain.close()">CANCEL</button>
+	</hh-curtain-footer>
+</form>

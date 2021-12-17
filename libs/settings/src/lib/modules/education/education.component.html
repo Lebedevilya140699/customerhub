@@ -1,0 +1,43 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container hh--cv-title-container--experience">
+			<h4>Education</h4>
+			<button mat-button color="primary">
+				<mat-icon>add</mat-icon>
+				ADD
+			</button>
+		</div>
+		<div class="hh--cv-block__data-container hh--cv-block__data-container--experience"
+			 *ngFor="let data of (resume$ | ngrxPush)?.education"
+		>
+			<div class="hh--cv-block__data-container__buttons">
+				<button mat-button color="primary" (click)="triggerEdit()">
+					<mat-icon>edit</mat-icon>
+					EDIT
+				</button>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">University</div>
+				<div class="hh--cv-block__data-content">{{data.universityName}}</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Degree</div>
+				<div class="hh--cv-block__data-content">{{data.degree}}</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Speciaization</div>
+				<div class="hh--cv-block__data-content">{{(data.specialization)}}</div>
+			</div>
+			<div class="hh--cv-block__data" *ngIf="data.startYear">
+				<div class="hh--cv-block__data-title">Start Year</div>
+				<div class="hh--cv-block__data-content">
+					{{data.startYear}}
+				</div>
+			</div>
+			<div class="hh--cv-block__data" *ngIf="data.finishYear">
+				<div class="hh--cv-block__data-title">Finish year</div>
+				<div class="hh--cv-block__data-content">{{data.finishYear | date: 'YYYY'}}</div>
+			</div>
+		</div>
+	</div>
+</hh-block>

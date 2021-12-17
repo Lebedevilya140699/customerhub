@@ -1,0 +1,39 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container">
+			<h4>Main Info</h4>
+		</div>
+		<div class="hh--cv-block__data-container">
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">First name</div>
+				<div class="hh--cv-block__data-content">
+					<p>
+					{{(resume$ | ngrxPush)?.personalInfo.firstName}}
+					</p>
+				</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Last name</div>
+				<div class="hh--cv-block__data-content">
+					<p>
+					{{ (resume$ | ngrxPush)?.personalInfo.lastName }}
+					</p>
+				</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Date of Birth</div>
+				<div class="hh--cv-block__data-content" [class.hh--cv-block__data-content--not-specified]="!(resume$ | ngrxPush)?.personalInfo.birthDate">
+					<p>
+					{{ ((resume$ | ngrxPush)?.personalInfo.birthDate | date: 'longDate')  || 'Not specified'}}
+					</p>
+				</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Position</div>
+				<div class="hh--cv-block__data-content">
+					{{ (resume$ | ngrxPush)?.personalInfo.position }}
+				</div>
+			</div>
+		</div>
+	</div>
+</hh-block>

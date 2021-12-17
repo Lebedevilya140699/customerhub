@@ -1,0 +1,99 @@
+{
+	"npmScope": "core",
+	"affected": {
+		"defaultBase": "master"
+	},
+	"implicitDependencies": {
+		"angular.json": "*",
+		"package.json": {
+			"dependencies": "*",
+			"devDependencies": "*"
+		},
+		"tsconfig.base.json": "*",
+		"tslint.json": "*",
+		"nx.json": "*"
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "@nrwl/workspace/tasks-runners/default",
+			"options": {
+				"cacheableOperations": ["build", "lint", "test", "e2e"]
+			}
+		}
+	},
+	"projects": {
+		"auth": {
+			"tags": []
+		},
+		"breadcrumbs": {
+			"tags": []
+		},
+		"card": {
+			"tags": []
+		},
+		"common": {
+			"tags": []
+		},
+		"config": {
+			"tags": []
+		},
+		"core-lib": {
+			"tags": []
+		},
+		"curtain": {
+			"tags": []
+		},
+		"cv": {
+			"tags": []
+		},
+		"dashboard": {
+			"tags": []
+		},
+		"domain": {
+			"tags": []
+		},
+		"employees": {
+			"tags": []
+		},
+		"grid": {
+			"tags": []
+		},
+		"hrhub": {
+			"tags": []
+		},
+		"hrhub-e2e": {
+			"tags": [],
+			"implicitDependencies": ["hrhub"]
+		},
+		"http": {
+			"tags": []
+		},
+		"layout": {
+			"tags": []
+		},
+		"navigation": {
+			"tags": []
+		},
+		"platform": {
+			"tags": []
+		},
+		"profile": {
+			"tags": []
+		},
+		"session": {
+			"tags": []
+		},
+		"settings": {
+			"tags": []
+		},
+		"tooltip-filter": {
+			"tags": []
+		},
+		"tasks": {
+			"tags": []
+		},
+		"user": {
+			"tags": []
+		}
+	}
+}

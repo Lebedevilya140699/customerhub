@@ -1,0 +1,89 @@
+<form [ngrxFormState]="$formState$ | async">
+	<hh-curtain-header>
+		<hh-curtain-title> Experience </hh-curtain-title>
+		<hh-curtain-button>
+			<div class="hh--settings-main-edit__close-button" (click)="curtain.close()">
+				<mat-icon>close</mat-icon>
+			</div>
+		</hh-curtain-button>
+	</hh-curtain-header>
+	<hh-curtain-content>
+		<hh-curtain-subtitle> Here you can edit your experience </hh-curtain-subtitle>
+		<div class="hh--settings-main-edit__content">
+			<p>Client</p>
+			<mat-form-field appearance="outline" floatLabel="always" class="hh--curtain__input">
+				<mat-label>Client</mat-label>
+				<input
+					matInput
+					placeholder="Client"
+					[ngrxFormControlState]="($formControls$ | async)?.client"
+					name="client"
+				/>
+			</mat-form-field>
+			<p>Role</p>
+			<mat-form-field appearance="outline" floatLabel="always" class="hh--curtain__input">
+				<mat-label>Role</mat-label>
+				<input
+					matInput
+					placeholder="Role"
+					[ngrxFormControlState]="($formControls$ | async)?.role"
+					name="role"
+				/>
+			</mat-form-field>
+			<p>Duration</p>
+			<div class="hh--settings-main-edit__field-group">
+				<mat-form-field appearance="outline" class="hh--curtain__input">
+					<mat-label>Start date</mat-label>
+					<input
+						matInput
+						[matDatepicker]="startedAt"
+						[ngrxFormControlState]="($formControls$ | async)?.startedAt"
+						[ngrxValueConverter]="dateValueConverter"
+						[max]="maxDate"
+						name="startedAt"
+					/>
+					<mat-datepicker-toggle matSuffix [for]="startedAt"></mat-datepicker-toggle>
+					<mat-datepicker #startedAt></mat-datepicker>
+				</mat-form-field>
+				<mat-form-field appearance="outline" class="hh--curtain__input">
+					<mat-label>End date</mat-label>
+					<input
+						matInput
+						[matDatepicker]="endedAt"
+						[ngrxFormControlState]="($formControls$ | async)?.endedAt"
+						[ngrxValueConverter]="dateValueConverter"
+						[max]="maxDate"
+						placeholder="Until now"
+						name="endedAt"
+					/>
+					<mat-datepicker-toggle matSuffix [for]="endedAt"></mat-datepicker-toggle>
+					<mat-datepicker #endedAt></mat-datepicker>
+				</mat-form-field>
+			</div>
+			<p>Description</p>
+			<mat-form-field appearance="outline" floatLabel="always" class="hh--curtain__input">
+				<mat-label>Description</mat-label>
+				<input
+					matInput
+					placeholder="Description"
+					[ngrxFormControlState]="($formControls$ | async)?.description"
+					name="description"
+				/>
+			</mat-form-field>
+			<p>Responsibilities</p>
+			<mat-form-field appearance="outline" floatLabel="always" class="hh--curtain__input">
+				<mat-label>Responsibilities</mat-label>
+				<input
+					matInput
+					placeholder="Responsibilities"
+					[ngrxFormControlState]="($formControls$ | async)?.responsibilities"
+					name="responsibilities"
+				/>
+			</mat-form-field>
+		</div>
+	</hh-curtain-content>
+	<hh-curtain-footer>
+		<button mat-flat-button color="primary" (click)="save()">SAVE</button>
+		<button mat-button (click)="curtain.close()">CANCEL</button>
+	</hh-curtain-footer>
+</form>

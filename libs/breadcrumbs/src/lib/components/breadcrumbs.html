@@ -1,0 +1,8 @@
+<div class="hh--breadcrumbs">
+	<ng-container *ngFor="let crumb of breadcrumbs">
+		<a *ngIf="crumb.route" routerLink="{{crumb.route}}"> {{crumb.displayValue}} <ng-container *ngIf="!crumb.leading">&nbsp; / &nbsp; </ng-container></a>
+		<div *ngIf="!crumb.route">
+			<p>{{crumb.displayValue}}</p>
+		</div>
+	</ng-container>
+</div>

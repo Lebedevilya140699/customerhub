@@ -1,0 +1,64 @@
+@include block(tooltip-filter) {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	transition: $default-transition;
+
+	@include element(container) {
+		display: inline-block;
+		padding: $spacing-03;
+		cursor: pointer;
+		transition: $default-transition;
+		border-radius: 6px;
+
+		&:hover {
+			background: rgba(0,0,0,0.1);
+		}
+	}
+
+	mat-icon {
+		color: #fff;
+		font-size: 16px;
+		width: 16px;
+		height: 16px;
+		opacity: 0;
+	}
+
+	@include modifier(checked) {
+		mat-icon {
+			opacity: 1;
+		}
+	}
+
+	@include modifier(red) {
+		background-color: #DD3C3C;
+	}
+
+	@include modifier(blue) {
+		background-color: #7096F6;
+	}
+
+	@include modifier(yellow) {
+		background-color: #F4D220;
+	}
+
+	@include modifier(green) {
+		background-color: #6FDD3C;
+	}
+
+	@include modifier(cyan) {
+		background-color: #3CCADD;
+	}
+
+	@include modifier(purple) {
+		background-color: #663CDD;
+	}
+
+	@include modifier(pink) {
+		background-color: #DD3CA6;
+	}
+}

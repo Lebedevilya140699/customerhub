@@ -1,0 +1,52 @@
+{
+	"root": true,
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"ecmaVersion": 2020,
+				"sourceType": "module"
+			},
+			"extends": [
+				"plugin:@angular-eslint/recommended",
+				// This is required if you use inline templates in Components
+				"plugin:@angular-eslint/template/process-inline-templates",
+				"plugin:prettier/recommended",
+				"./eslint-overrides.json"
+			],
+			"rules": {
+				"@angular-eslint/directive-selector": [
+					"error",
+					{ "type": "attribute", "prefix": "hh", "style": "camelCase" }
+				],
+				"@angular-eslint/contextual-decorator": ["error"],
+				"@angular-eslint/component-selector": [
+					"error",
+					{ "type": "element", "prefix": "hh", "style": "kebab-case" }
+				],
+				"@typescript-eslint/no-non-null-assertion": ["off"],
+				"@typescript-eslint/no-inferrable-types": ["off"],
+				"@angular-eslint/no-inputs-metadata-property": ["off"],
+				"max-len": ["error", 160],
+				"@angular-eslint/no-input-rename": ["off"],
+				"@angular-eslint/no-empty-lifecycle-method": "off",
+				"@angular-eslint/component-class-suffix": 0,
+				"@angular-eslint/directive-class-suffix": ["off"],
+				"quotes": "off"
+			}
+		},
+		{
+			"files": ["*.html"],
+			"extends": ["plugin:@angular-eslint/template/recommended"],
+			"rules": {
+				"quotes": ["error", "double"]
+				/**
+				 * Any template/HTML related rules you wish to use/reconfigure over and above the
+				 * recommended set provided by the @angular-eslint project would go here.
+				 */
+			}
+		}
+	],
+	"plugins": ["@nrwl/nx"]
+}

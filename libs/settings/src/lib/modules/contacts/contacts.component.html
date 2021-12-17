@@ -1,0 +1,36 @@
+<hh-block>
+	<div class="hh--cv-block">
+		<div class="hh--cv-title-container">
+			<h4>Contacts</h4>
+			<div class="hh--buttons-container">
+				<button mat-button color="primary" (click)="triggerAdd()"><mat-icon>add</mat-icon>ADD LINK</button>
+				<button mat-button color="primary" (click)="triggerEdit()"><mat-icon>edit</mat-icon>EDIT</button>
+			</div>
+		</div>
+		<div class="hh--cv-block__data-container">
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Phone</div>
+				<div class="hh--cv-block__data-content hh--cv-block__data-content--phone">
+					<a target="_blank" href="tel: {{(resume$ | ngrxPush)?.contactInfo.phone}}">{{(resume$ | ngrxPush)?.contactInfo.phone}}</a>
+				</div>
+			</div>
+			<div class="hh--cv-block__data">
+				<div class="hh--cv-block__data-title">Email</div>
+				<div class="hh--cv-block__data-content hh--cv-block__data-content--phone">
+					<a href="mailto: {{(resume$ | ngrxPush)?.contactInfo.email}}">{{(resume$ | ngrxPush)?.contactInfo.email}}</a>
+				</div>
+			</div>
+			<div class="hh--cv-block__data" *ngIf="(resume$ | ngrxPush)?.contactInfo.links">
+				<div class="hh--cv-block__data-title">Links</div>
+				<div class="hh--cv-block__data-content hh--cv-block__data-content--links">
+					<div class="hh--cv-block__data-content--link" *ngFor="let link of (resume$ | ngrxPush)?.contactInfo.links; let i = index;">
+						<a [href]="link" target="_blank">
+							{{link}}
+						</a>
+						<mat-icon (click)="linksFacade.deleteLink(i)">delete</mat-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</hh-block>

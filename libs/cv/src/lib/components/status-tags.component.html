@@ -1,0 +1,28 @@
+<ng-container *ngIf="status !== null">
+	<mat-chip-list class="hh--personal-info-main__status">
+		<mat-chip
+			[ngClass]="{
+				pending: isBusy,
+				approved: isAvailable
+			}"
+			>{{ readableStatus }}</mat-chip
+		>
+		<mat-chip class="approved">Last edit: {{ updated | date: 'dd.LL.yyyy' }}</mat-chip>
+
+		<button
+			mat-button
+			[matMenuTriggerFor]="menu"
+			class="hh--status-tags__export"
+			*ngIf="sessionRole === 'RESOURCE_HEAD' || email === sessionEmail"
+			[disabled]="isDownloading"
+		>
+			<div *ngIf="!isDownloading">Export&nbsp;CV</div>
+			<div *ngIf="isDownloading">Loading...</div>
+			<mat-icon *ngIf="isDownloading"><mat-spinner diameter="20"> </mat-spinner></mat-icon>
+		</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="download()">Export CV</button>
+			<button mat-menu-item (click)="downloadBages()">Export CV with bages</button>
+		</mat-menu>
+	</mat-chip-list>
+</ng-container>

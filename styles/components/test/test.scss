@@ -1,0 +1,13 @@
+@include block(test) {
+	@include element(dev) {
+		display: inline-block;
+		padding: $spacing-05 $spacing-07;
+		background: #444551;
+		border-radius: 6px;
+		font-size: 24px;
+		font-weight: 700;
+		letter-spacing: 1.25px;
+		text-transform: uppercase;
+		color: white;
+	}
+}

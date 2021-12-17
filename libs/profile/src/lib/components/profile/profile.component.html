@@ -1,0 +1,6 @@
+<hh-grid>
+	<hh-column cols="6">
+		<hh-breadcrumbs [breadcrumbs]="breadcrumbs"></hh-breadcrumbs>
+	</hh-column>
+</hh-grid>
+<hh-personal-info *ngIf="user$ | ngrxPush" [user]="user$ | ngrxPush"></hh-personal-info>

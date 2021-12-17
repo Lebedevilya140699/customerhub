@@ -1,0 +1,110 @@
+<hh-grid expanded>
+	<hh-column cols="3" collapsed>
+		<div class="hh--header__container">
+			<a [routerLink]="'/'" class="hh--header__logo-container">
+				<h1>CTHub</h1>
+			</a>
+			<hh-navigation class="hh--header__nav"></hh-navigation>
+		</div>
+	</hh-column>
+	<hh-column cols="3" collapsed>
+		<div class="hh--header__controls">
+			<div
+				class="hh--header__profile"
+				[class.hh--header__profile--active]="isMenuActive"
+				(click)="toggleMenu()"
+			>
+				<mat-icon class="hh--header__profile-icon">person</mat-icon>
+				<p>{{ (user$ | async)?.personalInfo.fullName }}</p>
+			</div>
+		</div>
+	</hh-column>
+</hh-grid>
+<div
+	(clickOutside)="hideMenu()"
+	*ngIf="isMenuActive"
+	[@showHideMenu]
+	[clickOutsideEnabled]="isMenuActive"
+	[exclude]="'.hh--header__profile'"
+	class="hh--header-menu"
+>
+	<div class="hh--header-menu__container">
+		<div class="hh--header-menu__info">
+			<div class="hh--header-menu__info-container">
+				<div class="hh--header-menu__logo">
+					<h2>CTHub</h2>
+				</div>
+			</div>
+			<div class="hh--header-menu__info-container">
+				<div class="hh--header-menu__delimeter"></div>
+			</div>
+			<div class="hh--header-menu__info-container">
+				<div class="hh--header-menu__profile-card">
+					<p>{{ (user$ | ngrxPush)?.personalInfo.fullName }}</p>
+					<p>{{ (user$ | ngrxPush)?.personalInfo.position }}</p>
+				</div>
+			</div>
+			<div class="hh--header-menu__info-container">
+				<div class="hh--header-menu__list">
+					<div *ngIf="user$ | ngrxPush as user" class="hh--header-menu__list-item" (click)="navigate('/profile/'+user.id)">
+						<mat-icon class="hh--header-menu__list-item__icon">assignment_ind</mat-icon>
+						<a>CV</a>
+					</div>
+					<div
+						class="hh--header-menu__list-item"
+						(click)="navigate('/tasks')"
+					>
+						<mat-icon class="hh--header-menu__list-item__icon">sort</mat-icon>
+						<a>Tasks</a>
+					</div>
+					<div
+						class="hh--header-menu__list-item hh--header-menu__list-item--disabled"
+						(click)="navigate('/')"
+					>
+						<mat-icon class="hh--header-menu__list-item__icon">groups</mat-icon>
+						<a>Team</a>
+					</div>
+					<div
+						class="hh--header-menu__list-item hh--header-menu__list-item--disabled"
+						(click)="navigate('/')"
+					>
+						<mat-icon class="hh--header-menu__list-item__icon">
+							chat_bubble_outline
+						</mat-icon>
+						<a>Chat</a>
+					</div>
+				</div>
+			</div>
+			<div class="hh--header-menu__info-container">
+				<p class="hh--header-menu__shortcuts">SHORTCUTS</p>
+			</div>
+			<div class="hh--header-menu__info-container">
+				<div class="hh--header-menu__list">
+					<div
+						class="hh--header-menu__list-item hh--header-menu__list-item--disabled"
+						(click)="navigate('/')"
+					>
+						<mat-icon class="hh--header-menu__list-item__icon">group_add</mat-icon>
+						<a>Invite</a>
+					</div>
+					<div
+						class="hh--header-menu__list-item hh--header-menu__list-item--disabled"
+						(click)="navigate('/')"
+					>
+						<mat-icon class="hh--header-menu__list-item__icon">sort</mat-icon>
+						<a>Tasks</a>
+					</div>
+					<div class="hh--header-menu__list-item" (click)="navigate('/settings')">
+						<mat-icon class="hh--header-menu__list-item__icon">settings</mat-icon>
+						<a>Settings</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hh--header-menu__controls">
+			<a (click)="logout()" class="hh--header-menu__logout">
+				<mat-icon class="hh--header-menu__logout__icon">logout</mat-icon>LOGOUT
+			</a>
+		</div>
+	</div>
+</div>

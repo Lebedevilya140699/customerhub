@@ -1,0 +1,86 @@
+@include block(curtain) {
+	height: 100%;
+	overflow-y: auto;
+	position: relative;
+	width: 100%;
+	background: white;
+
+	@include element(header) {
+		align-items: flex-start;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: $spacing-05;
+		min-height: 56px;
+	}
+
+	@include element(close) {
+		padding: $spacing-05;
+		cursor: pointer;
+
+		mat-icon {
+			display: block;
+		}
+
+		&:hover {
+			background: #f0f0f0;
+		}
+	}
+
+	@include element(title) {
+		display: block;
+		padding-left: $spacing-07;
+		padding-top: $spacing-10;
+
+		h4 {
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: 1.25px;
+		}
+	}
+
+	@include element(subtitle) {
+		display: block;
+		margin-bottom: $spacing-05;
+
+		p {
+			font-size: 1rem;
+			color: #999;
+		}
+	}
+
+	@include element(button) {
+		display: flex;
+	}
+
+	@include element(content) {
+		display: block;
+		height: 100%;
+		margin: 0 $spacing-05 7rem $spacing-07;
+		overflow: scroll;
+		padding-right: $spacing-05;
+
+		@include modifier(condensed) {
+			max-width: 400px;
+		}
+	}
+
+	@include element(input) {
+		width: 100%;
+	}
+
+	@include element(textarea) {
+		min-height: 400px;
+	}
+
+	@include element(footer) {
+		bottom: 0;
+		display: flex;
+		padding: $spacing-05 $spacing-07;
+		position: fixed;
+		width: 100%;
+
+		button:nth-child(1) {
+			margin-right: $spacing-05;
+		}
+	}
+}

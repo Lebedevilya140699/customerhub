@@ -1,0 +1,29 @@
+<form [ngrxFormState]="$formState$">
+	<hh-curtain-header>
+		<hh-curtain-title> Contacts</hh-curtain-title>
+		<hh-curtain-close (click)="curtain.close()"></hh-curtain-close>
+	</hh-curtain-header>
+	<hh-curtain-content>
+		<hh-curtain-subtitle> Here you can add link to your CV</hh-curtain-subtitle>
+		<mat-form-field
+			appearance="outline"
+			class="hh--curtain__input">
+			<mat-label>Link</mat-label>
+			<input
+				matInput
+				type="text"
+				placeholder="https://"
+				name="link"
+				[ngrxFormControlState]="($formControls$ | async)?.link"
+			/>
+			<mat-error>{{formValidator.controlHasError((linksFormFacade.formControls$ | async)?.link, 'link') ? 'This is not link' : 'Link is required'}}</mat-error>
+		</mat-form-field>
+	</hh-curtain-content>
+	<hh-curtain-footer>
+		<button mat-flat-button color="primary" (click)="save()" [disabled]="isLoading">
+			<mat-spinner *ngIf="isLoading" diameter="16"></mat-spinner>
+			SAVE
+		</button>
+		<button mat-button (click)="curtain.close()">CANCEL</button>
+	</hh-curtain-footer>
+</form>

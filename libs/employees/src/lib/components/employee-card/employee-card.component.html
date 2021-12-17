@@ -1,0 +1,60 @@
+<div class="hh--employee-card__hide-checkbox">
+	<div class="hh--employee-card">
+		<a [routerLink]="link" title="{{ fullName }}">
+			<div class="hh--employee-card__avatar">
+				<mat-icon *ngIf="!avatar" class="hh--employee-card__avatar__placeholder"
+					>person</mat-icon
+				>
+				<img
+					*ngIf="avatar"
+					src="{{ avatar }}"
+					alt="{{ fullName }}"
+					class="hh--employee-card__avatar"
+				/>
+			</div>
+		</a>
+		<div class="hh--employee-card__info">
+			<a [routerLink]="link" title="{{ fullName }}">
+				<div class="hh--employee-card__info__name h4">
+					{{ fullName }}
+				</div>
+				<ul class="hh--employee-card__info__list">
+					<li class="hh--employee-card__info__list__item">
+						<mat-icon class="hh--employee-card__info__list__item__icon"
+							>contacts</mat-icon
+						>
+						<span>{{ position }}</span>
+					</li>
+					<li class="hh--employee-card__info__list__item">
+						<mat-icon class="hh--employee-card__info__list__item__icon">place</mat-icon>
+						<span>{{ location.country }}, {{ location.city }}</span>
+					</li>
+				</ul>
+				<div>
+					<span
+						class="hh--employee-card__badge"
+						[ngClass]="{
+							'hh--employee-card__badge--red': isBusy,
+							'hh--employee-card__badge--green': isAvailable
+						}"
+						>{{ readableStatus }}</span
+					>
+				</div>
+			</a>
+		</div>
+
+		<div class="hh--employee-card__action">
+			<div [ngClass]="{ 'hh--employee-card__show-checkbox': isChecked === true }">
+				<mat-checkbox
+					[(ngModel)]="isUncheck"
+					(change)="exportCV($event, id)"
+					color="primary"
+					>Export CV</mat-checkbox
+				>
+			</div>
+			<a [hidden]="isChecked" [routerLink]="link" title="{{ fullName }}">
+				<mat-icon class="hh--employee-card__action__icon">call_made</mat-icon>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="hh--task-card">
+	<div class="hh--task-card__header">
+		<div class="hh--task-card__filters">
+			<hh-tooltip-filter (clicked)="someFunction($event)" type="red"></hh-tooltip-filter>
+			<hh-tooltip-filter (clicked)="anotherFunction($event)" type="blue"></hh-tooltip-filter>
+			<hh-tooltip-filter type="red"></hh-tooltip-filter>
+		</div>
+		<div class="hh--task-card__id">
+			<p>#{{task.id}}</p>
+		</div>
+	</div>
+	<div class="hh--task-card__content">
+		<div class="hh--task-card__title">
+			<h4>{{task.title}}</h4>
+		</div>
+		<div class="hh--task-card__data">
+			<div class="hh--task-card__data-title">
+				<p>Reporter</p>
+			</div>
+			<a routerLink="/profile/{{task.reporterId}}">{{task.reporter}}</a>
+		</div>
+		<div class="hh--task-card__data">
+			<div class="hh--task-card__data-title">
+				<p>Comment</p>
+			</div>
+			<p>Fixed discussion block, added new skills, added a new project to the block about work experience</p>
+		</div>
+	</div>
+	<div class="hh--task-card__icon">
+		<mat-icon>call_made</mat-icon>
+	</div>
+</div>

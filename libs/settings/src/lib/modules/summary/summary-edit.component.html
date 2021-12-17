@@ -1,0 +1,26 @@
+<form [ngrxFormState]="$formState$ | async">
+	<hh-curtain-header>
+		<hh-curtain-title> Summary </hh-curtain-title>
+		<hh-curtain-close (click)="curtain.close()"></hh-curtain-close>
+	</hh-curtain-header>
+	<hh-curtain-content>
+		<hh-curtain-subtitle> Here you can edit summary of your CV </hh-curtain-subtitle>
+			<mat-form-field
+				appearance="outline"
+				class="hh--curtain__input hh--curtain__textarea"
+			>
+				<mat-label>Your experience summary</mat-label>
+				<textarea
+					matTextareaAutosize
+					matInput
+					placeholder="Summary"
+					[ngrxFormControlState]="($formControls$ | async)?.summary"
+					name="summary"
+				></textarea>
+			</mat-form-field>
+	</hh-curtain-content>
+	<hh-curtain-footer>
+		<button mat-flat-button color="primary" (click)="save()">SAVE</button>
+		<button mat-button (click)="curtain.close()">CANCEL</button>
+	</hh-curtain-footer>
+</form>

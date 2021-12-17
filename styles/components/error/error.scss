@@ -1,0 +1,48 @@
+@include block(error) {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+
+	@include element(image) {
+		margin-right: $spacing-09;
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+
+		img {
+			width: 200px;
+			align-self: center;
+		}
+	}
+
+	@include element(message) {
+		width: 50%;
+
+		h2 {
+			margin-bottom: 0;
+			font-weight: 300;
+			letter-spacing: 1.25px;
+			font-size: 24px;
+			line-height: 175%;
+		}
+
+		a {
+			display: inline-flex;
+			background: #444551;
+			border-radius: 6px;
+			padding: $spacing-04 $spacing-05;
+			color: #fff;
+			line-height: 100%;
+			align-items: center;
+			margin-top: $spacing-05;
+
+			mat-icon {
+				font-size: 16px;
+				width: 16px;
+				height: 16px;
+				margin-right: $spacing-03;
+			}
+		}
+	}
+}

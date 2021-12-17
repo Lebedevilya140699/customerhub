@@ -1,0 +1,76 @@
+<hh-grid>
+	<hh-column cols="6">
+		<hh-block>
+			<hh-breadcrumbs [breadcrumbs]="breadcrumbs"></hh-breadcrumbs>
+		</hh-block>
+		<mat-form-field class="hh--employees-search" appearance="fill">
+			<mat-icon class="hh--employees-search__search-icon" matPrefix>search</mat-icon>
+			<mat-label>Name, position or place</mat-label>
+			<input matInput [(ngModel)]="searchTerm" type="text" #searchInput />
+			<button
+				*ngIf="searchTerm"
+				class="hh--employees-search__clear"
+				matSuffix
+				mat-icon-button
+				aria-label="Clear"
+				title="Clear"
+				(click)="clearSearch()"
+			>
+				<mat-icon>close</mat-icon>
+			</button>
+		</mat-form-field>
+
+		<mat-accordion>
+			<mat-expansion-panel [expanded]="isChecked" hideToggle>
+				<div class="hh--employees-export-button">
+					<button
+						(click)="downloadCv()"
+						*ngIf="isChecked"
+						[disabled]="isDownloading"
+						mat-raised-button
+						color="primary"
+					>
+						<div *ngIf="!isDownloading">Press to Export&nbsp;CVs</div>
+						<div *ngIf="isDownloading">Downloading...</div>
+					</button>
+				</div>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</hh-column>
+</hh-grid>
+
+<hh-grid *ngIf="isLoading$ | ngrxPush">
+	<div class="hh--employees-loader">
+		<mat-progress-spinner mode="indeterminate" diameter="{{ 50 }}"></mat-progress-spinner>
+	</div>
+</hh-grid>
+
+<hh-grid *ngIf="!(isLoading$ | ngrxPush)">
+	<hh-column cols="6">
+		<hh-block>
+			<div class="hh--employees-list">
+				<hh-employee-card
+					*ngFor="let user of users$ | ngrxPush"
+					[avatar]="user.personalInfo.photo"
+					[firstName]="user.personalInfo.firstName"
+					[lastName]="user.personalInfo.lastName"
+					[id]="user.id"
+					[location]="user.personalInfo.location"
+					[position]="user.personalInfo.position"
+					[status]="user.personalInfo.activityStatus"
+					(addId)="addItem($event)"
+					(removeId)="removeItem($event)"
+					class="hh--employees-list__card"
+				></hh-employee-card>
+			</div>
+		</hh-block>
+	</hh-column>
+</hh-grid>
+
+<hh-grid *ngIf="!(isLoading$ | ngrxPush) && !(users$ | ngrxPush)?.length && searchTerm">
+	<hh-column cols="6">
+		<hh-block>
+			<div class="hh--employees-no-results">No results found</div>
+		</hh-block>
+	</hh-column>
+</hh-grid>
